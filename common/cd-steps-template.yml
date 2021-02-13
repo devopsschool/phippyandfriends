@@ -15,13 +15,13 @@ steps:
     az aks get-credentials \
         -n $(aks) \
         -g $(rg)
-    helm repo add \
+    helm3 repo add \
         $(registryName) \
         https://$(registryServerName)/helm/v1/repo \
         --username $(registryLogin) \
         --password '$(registryPassword)'
     helmChartVersion=$(jq .helmChartVersion $(pipeline.workspace)/ci-pipeline/build-artifact/variables.json -r)
-    helm upgrade \
+    helm3 upgrade \
         --namespace $(k8sNamespace) \
         --create-namespace \
         --install \
