@@ -24,7 +24,7 @@ steps:
     helmVersionToInstall: $(helmVersion)
 - bash: |
     cd $(projectName)
-    helm3 package \
+    helm package \
         --version $(helmChartVersion) \
         --app-version $(imageTag) \
         charts/$(projectName)
