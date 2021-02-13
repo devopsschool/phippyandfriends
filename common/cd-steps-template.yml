@@ -34,3 +34,4 @@ steps:
         $(registryName)/$(projectName)
   failOnStderr: true
   displayName: 'deploy helm chart'
+  #
