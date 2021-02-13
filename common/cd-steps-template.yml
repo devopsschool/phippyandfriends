@@ -21,6 +21,7 @@ steps:
         --username $(registryLogin) \
         --password '$(registryPassword)'
     helmChartVersion=$(jq .helmChartVersion $(pipeline.workspace)/ci-pipeline/build-artifact/variables.json -r)
+    cat $(pipeline.workspace)/ci-pipeline/build-artifact/variables.json
     helm upgrade \
         --namespace $(k8sNamespace) \
         --create-namespace \
