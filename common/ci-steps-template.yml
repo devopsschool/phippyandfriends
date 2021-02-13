@@ -24,7 +24,7 @@ steps:
     helmVersionToInstall: $(helmVersion)
 - bash: |
     cd $(projectName)
-    helm package \
+    helm3 package \
         --version $(helmChartVersion) \
         --app-version $(imageTag) \
         charts/$(projectName)
@@ -33,7 +33,7 @@ steps:
 - bash: |
     cd $(projectName)
     chartPackage=$(ls $(projectName)-$(helmChartVersion).tgz)
-    az acr helm push \
+    az acr helm3 push \
         -n $(registryName) \
         -u $(registryLogin) \
         -p '$(registryPassword)' \
