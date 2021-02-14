@@ -32,8 +32,9 @@ steps:
   #displayName: 'helm package'
 - bash: |
     cd $(projectName)
-    echo "#####" $(registryName) "####" $chartPackage
+    echo "#####" $(registryName) "####" 
     chartPackage=$(ls $(projectName)-$(helmChartVersion).tgz)
+    echo $chartPackage
     az acr helm push \
         -n $(registryName) \
         -u $(registryLogin) \
