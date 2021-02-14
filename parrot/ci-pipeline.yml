@@ -27,6 +27,4 @@ steps:
         --wait \
         --version $(build.buildId) \
         --set image.repository=$(registryName)/$(projectName) \
-        --set ingress.enabled=false \
-        $(projectName) \
-        $(registryName)/$(projectName)
+        --set ingress.enabled=false $(projectName) $(registryName)/$(projectName)
