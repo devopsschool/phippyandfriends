@@ -33,12 +33,16 @@ steps:
 - bash: |
     cd $(projectName)
     chartPackage=$(ls $(projectName)-$(helmChartVersion).tgz)
-    az acr helm3 push \
+    az acr helm push \
         -n $(registryName) \
         -u $(registryLogin) \
         -p '$(registryPassword)' \
         $chartPackage
     echo $(jq -n --arg version "$(helmChartVersion)" '{helmChartVersion: $version}') > $(build.artifactStagingDirectory)/variables.json
+    echo $(build.artifactStagingDirectory)
+    cat $(build.artifactStagingDirectory)/variables.json
+    echo $(projectName)
+    echo 
   #failOnStderr: true
   name: helmPush
   condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
