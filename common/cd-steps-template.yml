@@ -15,6 +15,7 @@ steps:
     az aks get-credentials \
         -n $(aks) \
         -g $(rg)
+    kubectl get nodes
     helm repo add \
         $(registryName) \
         https://$(registryServerName)/helm/v1/repo \
