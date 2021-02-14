@@ -36,7 +36,7 @@ steps:
     chartPackage=$(ls $(projectName)-$(helmChartVersion).tgz)
     echo $chartPackage
     az acr helm push \
-        -n $(registryName) \
+        -n $(registryServerName) \
         -u $(registryLogin) \
         -p '$(registryPassword)' \
         $chartPackage
