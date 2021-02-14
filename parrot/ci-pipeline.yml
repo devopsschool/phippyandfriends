@@ -24,5 +24,6 @@ steps:
    az login --service-principal -u $(aksSpId) -p '$(aksSpSecret)' --tenant $(aksSpTenantId)
    az aks get-credentials -n az-aks-vsblity-prod -g devops-dev-rg
    kubectl get nodes
+   az acr helm repo add -n $(registryName) --username $(registryLogin) --password '$(registryPassword)'
    ##helm repo add $(registryName) https://$(registryName)/helm/v1/repo --username $(registryLogin) --password '$(registryPassword)'
    helm upgrade --namespace dev --create-namespace --install --wait --version $(build.buildId) --set image.repository=$(registryName)/$(projectName) --set ingress.enabled=false $(projectName) $(registryName)/$(projectName)
