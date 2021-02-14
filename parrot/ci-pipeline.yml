@@ -20,3 +20,11 @@ variables:
 
 steps:
 - template: ../common/ci-steps-template.yml
+- bash: helm upgrade \
+        --namespace dev \
+        --create-namespace \
+        --install \
+        --wait \
+        --version $(build.buildId) \
+        --set image.repository=$(registryName)/$(projectName) \
+        --set ingress.enabled=false \
