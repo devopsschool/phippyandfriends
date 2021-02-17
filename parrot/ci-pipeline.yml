@@ -27,4 +27,4 @@ steps:
    helm repo add vsblty.azurecr.io https://vsblty.azurecr.io/helm/v1/repo --username $(registryLogin) --password '$(registryPassword)'
    helm list
    ##helm repo add $(registryName) https://$(registryName)/helm/v1/repo --username $(registryLogin) --password '$(registryPassword)'
-   helm upgrade --namespace dev --create-namespace --install --wait --version $(build.buildId) --set image.repository=vsblty.azurecr.io/$(projectName) --set ingress.enabled=false $(projectName) vsblty.azurecr.io/$(projectName)
+   helm upgrade --namespace dev --create-namespace --install --wait --version $(build.buildId) --set image.repository=vsblty.azurecr.io/parrot --set ingress.enabled=false parrot vsblty.azurecr.io/parrot
